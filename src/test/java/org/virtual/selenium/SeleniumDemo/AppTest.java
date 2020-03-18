@@ -1,32 +1,29 @@
 package org.virtual.selenium.SeleniumDemo;
 
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-/**
- * Unit test for simple App.
- */
+
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+	String path = System.getProperty("user.dir");
+	private WebDriver driver;
+    String appURL = "www.google.com";
     @Test
-    public void shouldAnswerWithTrue()
+    public void testsetup()
     {
-        assertTrue( true );
+    	System.setProperty("webdriver.chrome.driver", path+"eclipse-workspace/main/driver/chromedriver");
+    	driver=new ChromeDriver();
     }
     
-    public static void main(String[] args) {
+    public void verify() {
+    	driver.navigate().to(appURL);
+    	String getTitle = driver.getTitle();
+    	System.out.println("the title of the page is"+getTitle);
+    	System.out.println("pass");
     	
-    	String path = System.getProperty("user.dir");
-    	
-		System.setProperty("webdriver.chrome.driver", path+"eclipse-workspace/main/driver/chromedriver");
-		WebDriver driver=new ChromeDriver();
-			driver.get("http://kushala.org/workspace/virtual-university/");
 			
 	}
 
